@@ -28,9 +28,13 @@ jobs:
           mkdir waypoints_gzip
           cd waypoints
           for file in *.json; do gzip -c "$file" > "../waypoints_gzip/$file.gz"; done
+          cd ..
+          mkdir data
+          mv waypoints_gzip/ data
+          mv waypoints/ data
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: waypoints
-          folder: .
+          folder: data
           single-commit: true
