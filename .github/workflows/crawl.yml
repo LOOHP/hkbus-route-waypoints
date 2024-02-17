@@ -26,6 +26,15 @@ jobs:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: waypoints # The branch the action should deploy to.
-          folder: waypoints # The folder the action should deploy.
+          branch: waypoints
+          folder: waypoints
+          single-commit: true
+      - name: Gzip resources
+        run: |
+          for file in *.json; do gzip -c "$file" > "$file.gz" && rm "$file"; done
+      - name: Deploy Gzip
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: waypoints
+          folder: waypoints_gzip
           single-commit: true
