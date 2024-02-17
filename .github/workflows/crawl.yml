@@ -23,19 +23,14 @@ jobs:
           pip install -r ./requirements.txt
       - name: Crawling resources
         run: python waypoints.py
+      - name: Gzip resources
+        run: |
+          mkdir waypoints_gzip
+          cd waypoints
+          for file in *.json; do gzip -c "$file" > "../waypoints_gzip/$file.gz"; done
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: waypoints
-          folder: waypoints
-          single-commit: true
-      - name: Gzip resources
-        run: |
-          mkdir waypoints_gzip
-          for file in waypoints/*.json; do gzip -c "$file" > "waypoints_gzip/$file.gz"; done
-      - name: Deploy Gzip
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: waypoints
-          folder: waypoints_gzip
+          folder: .
           single-commit: true
