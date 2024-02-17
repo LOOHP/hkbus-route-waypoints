@@ -31,7 +31,8 @@ jobs:
           single-commit: true
       - name: Gzip resources
         run: |
-          for file in *.json; do gzip -c "$file" > "$file.gz" && rm "$file"; done
+          mkdir waypoints_gzip
+          for file in waypoints/*.json; do gzip -c "$file" > "waypoints_gzip/$file.gz"; done
       - name: Deploy Gzip
         uses: JamesIves/github-pages-deploy-action@v4
         with:
