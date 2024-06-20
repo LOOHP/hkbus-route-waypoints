@@ -4,7 +4,7 @@
 
 This project is to fetch the waypoints from [CSDI](https://portal.csdi.gov.hk/geoportal/#metadataInfoPanel). It is daily synced to the sources and launched in gh-pages.
 
-During the crawling, it will minified the result by truncating to 5 decimal places, (i.e., ±1m), and minified the json by cleaning useless space characters. Also, as the data is provided statically by `gh-pages`, the data transfer supports `Content-Encoding: gzip` for largely preserving your bandwidth.
+During the crawling, it will minified the result by truncating to 5 decimal places, (i.e., ±1m), and minified the json by cleaning useless space characters. Also, as the data is provided statically by `waypoints`, the data transfer supports `Content-Encoding: gzip` for largely preserving your bandwidth.
 
 Links are in format:
 - MTR: https://hkbus.github.io/route-waypoints/{LINE_CODE}.json
